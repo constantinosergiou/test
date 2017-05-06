@@ -26,6 +26,7 @@ updateCourseState(event) {
 saveCourse(event) {
 	event.preventDefault();
   this.props.actions.saveCourse(this.state.course);
+  this.context.router.push('/courses');
 }
 	render() {
 	return(
@@ -43,6 +44,10 @@ ManageCoursePage.propTypes = {
 	course: PropTypes.object.isRequired,
 	authors: PropTypes.array.isRequired,
 	actions: PropTypes.object.isRequired
+};
+
+ManageCoursePage.contextTypes = {
+	router:  PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {
