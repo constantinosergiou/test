@@ -16,6 +16,14 @@ class ManageCoursePage extends React.Component {
     this.saveCourse = this.saveCourse.bind(this);
  }
 
+componentWillReiceiveProps(nextProps) {
+	if(this.props.course.id != nextProps.course.id) {
+		//Necessary to populate form hen existing course is loaded directly
+		this.setState({course: Object.assign({}, nextProps.course)});
+	}
+
+}
+
 updateCourseState(event) {
 	const field = event.target.name;
 	let course = this.state.course;
